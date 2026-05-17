@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
@@ -18,10 +18,10 @@
     --cream-2: #F5EDE0;
     --cream-3: #E8DCC8;
     --warm:    #D9C9B0;
-    --pist:    #7AAD65;
-    --pist-l:  #A8C897;
-    --pist-d:  #537A42;
-    --forest:  #1E2F1A;
+    --pist:    #8FC97A;
+    --pist-l:  #C0DEAE;
+    --pist-d:  #6BAF58;
+    --forest:  #5C8C52;
     --ink:     #2A2015;
     --ink-m:   #6A5C4A;
     --ink-l:   #A0917E;
@@ -94,7 +94,7 @@
     text-align: center;
     padding: 6rem 2rem 5rem;
     overflow: hidden;
-    background: var(--forest);
+    background: #7EAF72;
   }
 
   /* soft radial glow */
@@ -102,7 +102,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(122,173,101,.13) 0%, transparent 70%);
+    background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(255,255,255,.12) 0%, transparent 70%);
     pointer-events: none;
   }
 
@@ -110,7 +110,7 @@
   #hero-bg {
     position: absolute;
     inset: 0;
-    background: var(--forest);
+    background: linear-gradient(160deg, #8FBD82 0%, #6FA065 50%, #5C8C52 100%);
     /* When photo available: background: url('foto-hero.jpg') center/cover no-repeat; */
   }
   #hero-bg::after {
@@ -118,9 +118,9 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(to bottom,
-      rgba(20,30,17,.72) 0%,
-      rgba(20,30,17,.55) 50%,
-      rgba(20,30,17,.82) 100%);
+      rgba(255,255,255,.08) 0%,
+      rgba(0,0,0,.05) 50%,
+      rgba(0,0,0,.18) 100%);
   }
 
   .hero-inner {
@@ -199,7 +199,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 5vw, 3rem);
     font-weight: 300;
-    color: var(--pist-l);
+    color: rgba(255,255,255,.95);
     line-height: 1;
     min-width: 2.5ch;
     text-align: center;
@@ -208,13 +208,13 @@
     font-size: .55rem;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.32);
+    color: rgba(255,255,255,.75);
     margin-top: .3rem;
   }
   .cd-sep {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.4rem;
-    color: rgba(255,255,255,.15);
+    color: rgba(255,255,255,.25);
     padding-top: .1rem;
   }
 
@@ -611,7 +611,7 @@
 
   /* ══════════════════ FOOTER ══════════════════ */
   footer {
-    background: var(--forest);
+    background: linear-gradient(160deg, #8FBD82 0%, #6FA065 100%);
     text-align: center;
     padding: 5rem 2rem 3.5rem;
     position: relative;
@@ -743,10 +743,10 @@
 
     <!-- botanical top frame -->
     <svg class="hero-branch" viewBox="0 0 640 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g fill="#7AAD65" opacity=".9">
-        <line x1="320" y1="55" x2="20" y2="55" stroke="#7AAD65" stroke-width="1" stroke-opacity=".4"/>
-        <line x1="320" y1="55" x2="620" y2="55" stroke="#7AAD65" stroke-width="1" stroke-opacity=".4"/>
-        <line x1="320" y1="55" x2="320" y2="5"  stroke="#7AAD65" stroke-width="1" stroke-opacity=".4"/>
+      <g fill="#8FC97A" opacity=".9">
+        <line x1="320" y1="55" x2="20" y2="55" stroke="#8FC97A" stroke-width="1" stroke-opacity=".4"/>
+        <line x1="320" y1="55" x2="620" y2="55" stroke="#8FC97A" stroke-width="1" stroke-opacity=".4"/>
+        <line x1="320" y1="55" x2="320" y2="5"  stroke="#8FC97A" stroke-width="1" stroke-opacity=".4"/>
         <!-- left leaves -->
         <ellipse cx="270" cy="55" rx="26" ry="10" transform="rotate(-15 270 55)" opacity=".7"/>
         <ellipse cx="240" cy="45" rx="22" ry="9"  transform="rotate(-28 240 45)" opacity=".65"/>
@@ -819,9 +819,9 @@
 
     <!-- botanical bottom frame -->
     <svg class="hero-branch-bottom" viewBox="0 0 640 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g fill="#7AAD65" opacity=".9">
-        <line x1="320" y1="55" x2="20"  y2="55" stroke="#7AAD65" stroke-width="1" stroke-opacity=".4"/>
-        <line x1="320" y1="55" x2="620" y2="55" stroke="#7AAD65" stroke-width="1" stroke-opacity=".4"/>
+      <g fill="#8FC97A" opacity=".9">
+        <line x1="320" y1="55" x2="20"  y2="55" stroke="#8FC97A" stroke-width="1" stroke-opacity=".4"/>
+        <line x1="320" y1="55" x2="620" y2="55" stroke="#8FC97A" stroke-width="1" stroke-opacity=".4"/>
         <ellipse cx="270" cy="55" rx="26" ry="10" transform="rotate(-15 270 55)" opacity=".7"/>
         <ellipse cx="240" cy="45" rx="22" ry="9"  transform="rotate(-28 240 45)" opacity=".65"/>
         <ellipse cx="268" cy="67" rx="20" ry="8"  transform="rotate(12 268 67)"  opacity=".6"/>
@@ -857,9 +857,9 @@
 <!-- botanical divider -->
 <div class="divider-wrap" aria-hidden="true">
   <svg class="divider-branch" viewBox="0 0 700 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#7AAD65">
-      <line x1="350" y1="30" x2="30"  y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
-      <line x1="350" y1="30" x2="670" y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
+    <g fill="#8FC97A">
+      <line x1="350" y1="30" x2="30"  y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="350" y1="30" x2="670" y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
       <ellipse cx="300" cy="30" rx="22" ry="8"  transform="rotate(-15 300 30)" opacity=".6"/>
       <ellipse cx="272" cy="23" rx="18" ry="7"  transform="rotate(-28 272 23)" opacity=".55"/>
       <ellipse cx="299" cy="39" rx="16" ry="6"  transform="rotate(14 299 39)"  opacity=".5"/>
@@ -947,9 +947,9 @@
 <!-- botanical divider -->
 <div class="divider-wrap" aria-hidden="true">
   <svg class="divider-branch" viewBox="0 0 700 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#7AAD65">
-      <line x1="350" y1="30" x2="30"  y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
-      <line x1="350" y1="30" x2="670" y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
+    <g fill="#8FC97A">
+      <line x1="350" y1="30" x2="30"  y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="350" y1="30" x2="670" y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
       <ellipse cx="300" cy="30" rx="22" ry="8"  transform="rotate(-15 300 30)" opacity=".6"/>
       <ellipse cx="272" cy="23" rx="18" ry="7"  transform="rotate(-28 272 23)" opacity=".55"/>
       <ellipse cx="245" cy="20" rx="15" ry="6"  transform="rotate(-40 245 20)" opacity=".45"/>
@@ -1032,9 +1032,9 @@
 <!-- botanical divider -->
 <div class="divider-wrap" aria-hidden="true">
   <svg class="divider-branch" viewBox="0 0 700 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#7AAD65">
-      <line x1="350" y1="30" x2="30"  y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
-      <line x1="350" y1="30" x2="670" y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
+    <g fill="#8FC97A">
+      <line x1="350" y1="30" x2="30"  y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="350" y1="30" x2="670" y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
       <ellipse cx="300" cy="30" rx="22" ry="8"  transform="rotate(-15 300 30)" opacity=".6"/>
       <ellipse cx="272" cy="23" rx="18" ry="7"  transform="rotate(-28 272 23)" opacity=".55"/>
       <ellipse cx="245" cy="20" rx="15" ry="6"  transform="rotate(-40 245 20)" opacity=".45"/>
@@ -1085,9 +1085,9 @@
 <!-- botanical divider -->
 <div class="divider-wrap" aria-hidden="true">
   <svg class="divider-branch" viewBox="0 0 700 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#7AAD65">
-      <line x1="350" y1="30" x2="30"  y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
-      <line x1="350" y1="30" x2="670" y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
+    <g fill="#8FC97A">
+      <line x1="350" y1="30" x2="30"  y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="350" y1="30" x2="670" y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
       <ellipse cx="300" cy="30" rx="22" ry="8"  transform="rotate(-15 300 30)" opacity=".6"/>
       <ellipse cx="272" cy="23" rx="18" ry="7"  transform="rotate(-28 272 23)" opacity=".55"/>
       <ellipse cx="245" cy="20" rx="15" ry="6"  transform="rotate(-40 245 20)" opacity=".45"/>
@@ -1116,7 +1116,7 @@
 
     <div class="dress-wrap" data-r data-d="2">
       <div class="dress-card">
-        <div class="dress-swatch" style="background:linear-gradient(135deg,#7AAD65,#A8C897);"></div>
+        <div class="dress-swatch" style="background:linear-gradient(135deg,#8FC97A,#A8C897);"></div>
         <p class="dress-card-title">Traje Passeio</p>
         <p class="dress-card-body">
           Traje social, confortável<br>
@@ -1140,9 +1140,9 @@
 <!-- botanical divider -->
 <div class="divider-wrap" aria-hidden="true">
   <svg class="divider-branch" viewBox="0 0 700 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#7AAD65">
-      <line x1="350" y1="30" x2="30"  y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
-      <line x1="350" y1="30" x2="670" y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
+    <g fill="#8FC97A">
+      <line x1="350" y1="30" x2="30"  y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="350" y1="30" x2="670" y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
       <ellipse cx="300" cy="30" rx="22" ry="8"  transform="rotate(-15 300 30)" opacity=".6"/>
       <ellipse cx="272" cy="23" rx="18" ry="7"  transform="rotate(-28 272 23)" opacity=".55"/>
       <ellipse cx="245" cy="20" rx="15" ry="6"  transform="rotate(-40 245 20)" opacity=".45"/>
@@ -1175,9 +1175,9 @@
 <!-- botanical divider -->
 <div class="divider-wrap" aria-hidden="true">
   <svg class="divider-branch" viewBox="0 0 700 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g fill="#7AAD65">
-      <line x1="350" y1="30" x2="30"  y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
-      <line x1="350" y1="30" x2="670" y2="30" stroke="#7AAD65" stroke-width="1" stroke-opacity=".3"/>
+    <g fill="#8FC97A">
+      <line x1="350" y1="30" x2="30"  y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
+      <line x1="350" y1="30" x2="670" y2="30" stroke="#8FC97A" stroke-width="1" stroke-opacity=".3"/>
       <ellipse cx="300" cy="30" rx="22" ry="8"  transform="rotate(-15 300 30)" opacity=".6"/>
       <ellipse cx="272" cy="23" rx="18" ry="7"  transform="rotate(-28 272 23)" opacity=".55"/>
       <ellipse cx="245" cy="20" rx="15" ry="6"  transform="rotate(-40 245 20)" opacity=".45"/>
@@ -1261,9 +1261,9 @@
 <!-- ══════════════════════ FOOTER ══════════════════════ -->
 <footer>
   <svg class="footer-branch" viewBox="0 0 640 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <g fill="#7AAD65" opacity=".9">
-      <line x1="320" y1="55" x2="20"  y2="55" stroke="#7AAD65" stroke-width="1" stroke-opacity=".4"/>
-      <line x1="320" y1="55" x2="620" y2="55" stroke="#7AAD65" stroke-width="1" stroke-opacity=".4"/>
+    <g fill="#8FC97A" opacity=".9">
+      <line x1="320" y1="55" x2="20"  y2="55" stroke="#8FC97A" stroke-width="1" stroke-opacity=".4"/>
+      <line x1="320" y1="55" x2="620" y2="55" stroke="#8FC97A" stroke-width="1" stroke-opacity=".4"/>
       <ellipse cx="270" cy="55" rx="26" ry="10" transform="rotate(-15 270 55)" opacity=".7"/>
       <ellipse cx="240" cy="45" rx="22" ry="9"  transform="rotate(-28 240 45)" opacity=".65"/>
       <ellipse cx="210" cy="39" rx="19" ry="8"  transform="rotate(-40 210 39)" opacity=".5"/>
