@@ -9,6 +9,7 @@ const state = {
   loading: false,
   view: 'list', // 'list' | 'detail'
   detail: null,
+  sync: null, // null | { status: 'running'|'done'|'error', fetched, total, data, error }
 };
 
 // ---- DOM helpers ----
@@ -107,6 +108,70 @@ async function loadActivities(reset = false) {
   }
 }
 
+// ---- Sync all ----
+function syncAll() {
+  if (state.sync?.status === 'running') return;
+  state.sync = { status: 'running', fetched: 0, total: null, data: null, error: null };
+  render();
+
+  const es = new EventSource('/api/sync');
+
+  es.addEventListener('progress', e => {
+    const { fetched } = JSON.parse(e.data);
+    state.sync.fetched = fetched;
+    const prog = $('sync-progress-bar');
+    const label = $('sync-label');
+    if (prog) prog.style.width = '100%'; // indeterminate until done
+    if (label) label.textContent = `A sincronizar… ${fetched} atividades`;
+  });
+
+  es.addEventListener('done', e => {
+    const { total, activities } = JSON.parse(e.data);
+    state.sync = { status: 'done', fetched: total, total, data: activities, error: null };
+    es.close();
+    render();
+  });
+
+  es.addEventListener('error', e => {
+    let msg = 'Erro de ligação ao servidor.';
+    try { msg = JSON.parse(e.data).message; } catch {}
+    state.sync = { status: 'error', fetched: state.sync?.fetched || 0, total: null, data: null, error: msg };
+    es.close();
+    render();
+  });
+}
+
+function downloadJSON() {
+  if (!state.sync?.data) return;
+  const blob = new Blob([JSON.stringify(state.sync.data, null, 2)], { type: 'application/json' });
+  triggerDownload(blob, `garmin-activities-${today()}.json`);
+}
+
+function downloadCSV() {
+  if (!state.sync?.data) return;
+  const cols = ['activityId','activityName','startTimeLocal','distance','duration','averageHR','maxHR','calories','averageSpeed','elevationGain'];
+  const rows = [cols.join(',')];
+  for (const a of state.sync.data) {
+    rows.push(cols.map(k => {
+      const v = a[k] ?? a.summaryDTO?.[k] ?? '';
+      return `"${String(v).replace(/"/g, '""')}"`;
+    }).join(','));
+  }
+  const blob = new Blob([rows.join('\n')], { type: 'text/csv' });
+  triggerDownload(blob, `garmin-activities-${today()}.csv`);
+}
+
+function triggerDownload(blob, name) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = name; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
 async function loadDetail(activityId) {
   state.loading = true;
   render();
@@ -168,7 +233,10 @@ function renderList() {
           <div class="user-label">Garmin Connect</div>
         </div>
       </div>
-      <button class="btn btn-outline btn-sm" id="btn-refresh-top">↻</button>
+      <div style="display:flex;gap:8px">
+        <button class="btn btn-outline btn-sm" id="btn-sync-all">⬇ Exportar</button>
+        <button class="btn btn-outline btn-sm" id="btn-refresh-top">↻</button>
+      </div>
     </div>
 
     <div id="install-banner" class="install-banner hidden">
@@ -177,6 +245,8 @@ function renderList() {
     </div>
 
     <div id="error-area"></div>
+
+    ${renderSyncPanel()}
 
     <div class="section-header">
       <span class="section-title">Atividades recentes</span>
@@ -199,6 +269,41 @@ function renderList() {
         <div style="font-size:40px;margin-bottom:12px">🏅</div>
         <p>Sem atividades ainda.</p>
       </div>` : ''}`;
+}
+
+function renderSyncPanel() {
+  const s = state.sync;
+  if (!s) return '';
+
+  if (s.status === 'running') {
+    return `
+      <div class="sync-panel">
+        <div id="sync-label" class="sync-label">A sincronizar… ${s.fetched} atividades</div>
+        <div class="sync-track"><div id="sync-progress-bar" class="sync-bar sync-bar-anim"></div></div>
+      </div>`;
+  }
+
+  if (s.status === 'error') {
+    return `
+      <div class="sync-panel sync-panel-error">
+        <div class="sync-label">Erro: ${escHtml(s.error)}</div>
+        <button class="btn btn-outline btn-sm" id="btn-sync-retry">↻ Tentar novamente</button>
+      </div>`;
+  }
+
+  if (s.status === 'done') {
+    return `
+      <div class="sync-panel sync-panel-done">
+        <div class="sync-label">✓ ${s.total} atividades sincronizadas</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+          <button class="btn btn-primary btn-sm" id="btn-dl-json">⬇ JSON</button>
+          <button class="btn btn-outline btn-sm" id="btn-dl-csv">⬇ CSV</button>
+          <button class="btn btn-outline btn-sm" id="btn-sync-close">✕</button>
+        </div>
+      </div>`;
+  }
+
+  return '';
 }
 
 function renderActivityCard(a) {
@@ -296,6 +401,11 @@ function attachEvents() {
   $('btn-install')?.addEventListener('click', () => {
     installPrompt?.prompt();
   });
+  $('btn-sync-all')?.addEventListener('click', syncAll);
+  $('btn-sync-retry')?.addEventListener('click', syncAll);
+  $('btn-dl-json')?.addEventListener('click', downloadJSON);
+  $('btn-dl-csv')?.addEventListener('click', downloadCSV);
+  $('btn-sync-close')?.addEventListener('click', () => { state.sync = null; render(); });
 
   document.querySelectorAll('.activity-card').forEach(card => {
     card.addEventListener('click', () => loadDetail(card.dataset.id));

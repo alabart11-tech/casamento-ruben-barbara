@@ -74,6 +74,40 @@ app.get('/api/activities/:id', async (req, res) => {
   }
 });
 
+// Sincroniza todas as atividades via Server-Sent Events
+app.get('/api/sync', async (req, res) => {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  res.flushHeaders();
+
+  const send = (event, data) => {
+    res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`);
+  };
+
+  try {
+    const BATCH = 100;
+    let start = 0;
+    const all = [];
+
+    while (true) {
+      const list = await garmin(g => g.getActivities(start, BATCH));
+      const items = Array.isArray(list) ? list : (list.activityList || []);
+      all.push(...items);
+      start += items.length;
+      send('progress', { fetched: all.length });
+      if (items.length < BATCH) break;
+    }
+
+    send('done', { total: all.length, activities: all });
+  } catch (e) {
+    console.error('sync:', e.message);
+    send('error', { message: e.message });
+  } finally {
+    res.end();
+  }
+});
+
 app.listen(PORT, async () => {
   console.log(`Garmin PWA a correr em http://localhost:${PORT}`);
   await connect();

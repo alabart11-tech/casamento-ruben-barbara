@@ -207,6 +207,25 @@ main { flex: 1; padding: 20px; max-width: 480px; margin: 0 auto; width: 100%; }
 .install-banner p { font-size: 13px; color: var(--text); flex: 1; }
 .install-banner p span { color: var(--muted); display: block; font-size: 12px; }
 
+/* ---- Sync panel ---- */
+.sync-panel {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px;
+  margin-bottom: 20px;
+}
+.sync-panel-done { border-color: var(--accent); }
+.sync-panel-error { border-color: rgba(239,68,68,.4); }
+.sync-label { font-size: 14px; font-weight: 600; margin-bottom: 10px; }
+.sync-track {
+  height: 6px; background: var(--border); border-radius: 99px; overflow: hidden;
+}
+.sync-bar { height: 100%; background: var(--accent); border-radius: 99px; width: 0; transition: width .3s; }
+.sync-bar-anim { animation: sync-pulse 1.4s ease-in-out infinite; width: 100%; }
+@keyframes sync-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
+
 /* ---- Hidden ---- */
 .hidden { display: none !important; }
 
