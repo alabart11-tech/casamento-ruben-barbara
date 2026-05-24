@@ -1,0 +1,20 @@
+{
+  "name": "garmin-pwa",
+  "version": "1.0.0",
+  "description": "Garmin Connect sync PWA - sem precisar de computador",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "oauth": "^0.10.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
