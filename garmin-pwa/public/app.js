@@ -74,17 +74,12 @@ async function api(path) {
 
 // ---- Auth ----
 async function checkAuth() {
-  const data = await api('/auth/status');
-  state.auth = data;
-  render();
-}
-
-async function logout() {
-  await fetch('/auth/logout', { method: 'POST' });
-  state.auth = { authenticated: false, displayName: null };
-  state.activities = [];
-  state.page = 0;
-  state.hasMore = true;
+  try {
+    const data = await api('/auth/status');
+    state.auth = data;
+  } catch {
+    state.auth = { authenticated: false, displayName: null };
+  }
   render();
 }
 
@@ -148,15 +143,15 @@ function render() {
 }
 
 function renderLogin() {
-  const err = new URLSearchParams(location.search).get('error');
   return `
     <div class="login-screen">
-      <div class="login-hero">⌚</div>
-      <h1>Garmin Sync</h1>
-      <p>Liga a tua conta Garmin e acompanha os teus treinos diretamente no celular.</p>
-      ${err ? `<div class="error-msg">Erro ao autenticar. Tenta novamente.</div>` : ''}
-      <a href="/auth/login" class="btn btn-primary">🔗 Ligar conta Garmin</a>
-      <p style="font-size:12px;color:var(--muted)">Redireciona para o Garmin Connect</p>
+      <div class="login-hero">⚠️</div>
+      <h1>Erro de configuração</h1>
+      <p>Não foi possível ligar ao Garmin Connect. Verifica as credenciais no ficheiro <code>.env</code> do servidor.</p>
+      <div class="error-msg" style="text-align:left;width:100%">
+        <strong>GARMIN_EMAIL</strong> e <strong>GARMIN_PASSWORD</strong> têm de estar preenchidos com o teu login do Garmin Connect.
+      </div>
+      <button class="btn btn-primary" onclick="checkAuth()">↻ Tentar novamente</button>
     </div>`;
 }
 
@@ -173,7 +168,7 @@ function renderList() {
           <div class="user-label">Garmin Connect</div>
         </div>
       </div>
-      <button class="btn btn-outline btn-sm" id="btn-logout">Sair</button>
+      <button class="btn btn-outline btn-sm" id="btn-refresh-top">↻</button>
     </div>
 
     <div id="install-banner" class="install-banner hidden">
@@ -292,7 +287,7 @@ function escHtml(str) {
 
 // ---- Events ----
 function attachEvents() {
-  $('btn-logout')?.addEventListener('click', logout);
+  $('btn-refresh-top')?.addEventListener('click', () => loadActivities(true));
   $('btn-refresh')?.addEventListener('click', () => loadActivities(true));
   $('btn-more')?.addEventListener('click', () => loadActivities());
   $('btn-back')?.addEventListener('click', () => {
