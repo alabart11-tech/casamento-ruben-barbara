@@ -44,7 +44,12 @@ setTimeout(() => {
 }, 5000);
 
 function startTunnel() {
-  const cf = spawn('cloudflared', ['tunnel', '--url', `http://localhost:${PORT}`], {
+  const path = require('path');
+  const isWin = process.platform === 'win32';
+  // Procura cloudflared.exe na pasta do projeto (Windows) ou no PATH (Mac/Linux)
+  const cfBin = isWin ? path.join(__dirname, 'cloudflared.exe') : 'cloudflared';
+
+  const cf = spawn(cfBin, ['tunnel', '--url', `http://localhost:${PORT}`], {
     stdio: ['ignore', 'pipe', 'pipe'],
   });
 
