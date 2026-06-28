@@ -15,16 +15,16 @@
 
   :root {
     --cream:   #FDFCFA;
-    --cream-2: #F5F2EE;
-    --cream-3: #ECEAE4;
-    --warm:    #FFDBCC;
-    --pist:    #97C1A9;
-    --pist-l:  #CCE2CB;
-    --pist-d:  #6FA08A;
-    --teal:    #8FCACA;
-    --teal-l:  #D4F0F0;
-    --peach:   #FFDBCC;
-    --forest:  #7BB0A0;
+    --cream-2: #F5F0E8;
+    --cream-3: #EDE2CC;
+    --warm:    #E8C9A0;
+    --pist:    #C2A878;
+    --pist-l:  #DCC9A3;
+    --pist-d:  #A8835A;
+    --teal:    #D4BD8E;
+    --teal-l:  #EDE2CC;
+    --peach:   #E8C9A0;
+    --forest:  #B89968;
     --ink:     #2C2C2C;
     --ink-m:   #6A6A6A;
     --ink-l:   #A8A8A8;
@@ -99,7 +99,7 @@
     text-align: center;
     padding: 6rem 2rem 5rem;
     overflow: hidden;
-    background: #D4F0F0;
+    background: #EDE2CC;
   }
 
   /* soft radial glow */
@@ -115,7 +115,7 @@
   #hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, #D4F0F0 0%, #8FCACA 35%, #97C1A9 65%, #ECEAE4 100%);
+    background: linear-gradient(180deg, #EDE2CC 0%, #D4BD8E 35%, #C2A878 65%, #F5F0E8 100%);
     /* When photo available: background: url('foto-hero.jpg') center/cover no-repeat; */
   }
   #hero-bg::after {
@@ -371,6 +371,7 @@
     margin: 0 auto;
     background: var(--cream-3);
   }
+  .info-cards-2 { grid-template-columns: repeat(2, 1fr); max-width: 600px; }
 
   .info-card {
     background: var(--white);
@@ -510,6 +511,14 @@
     line-height: 1.8;
   }
 
+  .dress-card-note {
+    font-size: .74rem;
+    font-style: italic;
+    color: var(--ink-l);
+    margin-top: .5rem;
+    line-height: 1.6;
+  }
+
   /* ══════════════════ GIFTS ══════════════════ */
   .gifts-quote {
     font-family: 'Cormorant Garamond', serif; font-style: italic;
@@ -616,7 +625,7 @@
 
   /* ══════════════════ FOOTER ══════════════════ */
   footer {
-    background: linear-gradient(160deg, #97C1A9 0%, #8FCACA 100%);
+    background: linear-gradient(160deg, #C2A878 0%, #D4BD8E 100%);
     text-align: center;
     padding: 5rem 2rem 3.5rem;
     position: relative;
@@ -840,7 +849,7 @@
       Venha celebrar este momento especial conosco em um espaço único em Belo Horizonte.
     </p>
 
-    <div class="info-cards" data-r data-d="2">
+    <div class="info-cards info-cards-2" data-r data-d="2">
       <div class="info-card">
         <svg class="info-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
           <path d="M18 3C12 3 7 8 7 14c0 9 11 19 11 19s11-10 11-19c0-6-5-11-11-11z"/>
@@ -855,23 +864,6 @@
         </p>
         <a href="https://www.google.com/maps/place/Anella+Spazio+Eventi/@-19.8439265,-43.9759319,17z"
            target="_blank" rel="noopener noreferrer" class="info-card-link">Abrir no Maps →</a>
-      </div>
-
-      <div class="info-card">
-        <svg class="info-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
-          <rect x="4" y="7" width="28" height="25" rx="1"/>
-          <path d="M24 5v4M12 5v4M4 16h28"/>
-          <rect x="10" y="22" width="4" height="4" rx=".5"/>
-          <rect x="16" y="22" width="4" height="4" rx=".5"/>
-          <rect x="22" y="22" width="4" height="4" rx=".5"/>
-        </svg>
-        <p class="info-card-title">10 de Julho de 2027</p>
-        <p class="info-card-body">
-          Sábado<br><br>
-          14h — Cerimônia<br>
-          15h — Festa<br>
-          23h — Encerramento
-        </p>
       </div>
 
       <div class="info-card">
@@ -942,13 +934,10 @@
         </p>
       </div>
       <div class="dress-card">
-        <div class="dress-swatch" style="background:linear-gradient(135deg,#97C1A9,#8FCACA);"></div>
+        <div class="dress-swatch" style="background:linear-gradient(135deg,#C2A878,#A8835A);"></div>
         <p class="dress-card-title">Masculino</p>
-        <p class="dress-card-body">
-          Passeio Completo<br><br>
-          Terno ou blazer<br>
-          com calça social.
-        </p>
+        <p class="dress-card-body">Passeio Completo</p>
+        <p class="dress-card-note">Camisa social branca e sapato.</p>
       </div>
       <div class="dress-card">
         <div class="dress-swatch" style="background:linear-gradient(135deg,#ECEAE4,#FDFCFA);border:1px solid #D8D4CC;"></div>
