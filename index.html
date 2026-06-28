@@ -14,17 +14,17 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --cream:   #FDFCFA;
-    --cream-2: #F5F0E8;
-    --cream-3: #EDE2CC;
+    --cream:   #FBF7EE;
+    --cream-2: #F5EEDF;
+    --cream-3: #ECE0C8;
     --warm:    #E8C9A0;
-    --pist:    #C2A878;
-    --pist-l:  #DCC9A3;
-    --pist-d:  #A8835A;
+    --pist:    #B8943F;
+    --pist-l:  #D6BD80;
+    --pist-d:  #93722E;
     --teal:    #D4BD8E;
     --teal-l:  #EDE2CC;
     --peach:   #E8C9A0;
-    --forest:  #B89968;
+    --forest:  #C2A05A;
     --ink:     #2C2C2C;
     --ink-m:   #6A6A6A;
     --ink-l:   #A8A8A8;
@@ -69,7 +69,7 @@
     font-size: 1.3rem;
     font-weight: 300;
     letter-spacing: .08em;
-    color: var(--white);
+    color: var(--ink);
     text-decoration: none;
     transition: color .45s;
     line-height: 1;
@@ -81,7 +81,7 @@
     font-size: .68rem;
     letter-spacing: .2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.7);
+    color: var(--ink-m);
     text-decoration: none;
     transition: color .3s;
   }
@@ -99,7 +99,7 @@
     text-align: center;
     padding: 6rem 2rem 5rem;
     overflow: hidden;
-    background: #EDE2CC;
+    background: #FBF7EE;
   }
 
   /* soft radial glow */
@@ -115,7 +115,7 @@
   #hero-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, #EDE2CC 0%, #D4BD8E 35%, #C2A878 65%, #F5F0E8 100%);
+    background: linear-gradient(180deg, #FBF7EE 0%, #F5EEDF 50%, #FBF7EE 100%);
     /* When photo available: background: url('foto-hero.jpg') center/cover no-repeat; */
   }
   #hero-bg::after {
@@ -136,11 +136,22 @@
     align-items: center;
   }
 
+  .hero-vine {
+    position: absolute;
+    width: clamp(90px, 16vw, 160px);
+    height: auto;
+    z-index: 1;
+    opacity: .8;
+    pointer-events: none;
+  }
+  .hero-vine-tl { top: 0; left: 0; }
+  .hero-vine-br { bottom: 0; right: 0; transform: rotate(180deg); }
+
   .hero-label {
     font-size: .65rem;
     letter-spacing: .42em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.85);
+    color: var(--pist-d);
     margin-bottom: 1.5rem;
   }
 
@@ -149,7 +160,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
     font-size: clamp(2.5rem, 5vw, 3.5rem);
-    color: rgba(255,255,255,.75);
+    color: var(--pist);
     line-height: 1;
     display: block;
     font-weight: 300;
@@ -168,14 +179,14 @@
     font-weight: 300;
     letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--white);
+    color: var(--ink);
     line-height: 1;
   }
 
   .hero-divline {
     width: 1px;
     height: 60px;
-    background: rgba(255,255,255,.2);
+    background: var(--cream-3);
     flex-shrink: 0;
   }
 
@@ -183,7 +194,7 @@
     font-size: .72rem;
     letter-spacing: .32em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.75);
+    color: var(--ink-m);
     margin-bottom: 2.75rem;
   }
 
@@ -199,7 +210,7 @@
     font-family: 'Cormorant Garamond', serif;
     font-size: clamp(2.2rem, 5vw, 3rem);
     font-weight: 300;
-    color: rgba(255,255,255,.95);
+    color: var(--pist-d);
     line-height: 1;
     min-width: 2.5ch;
     text-align: center;
@@ -208,13 +219,13 @@
     font-size: .55rem;
     letter-spacing: .16em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.75);
+    color: var(--ink-l);
     margin-top: .3rem;
   }
   .cd-sep {
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.4rem;
-    color: rgba(255,255,255,.25);
+    color: var(--cream-3);
     padding-top: .1rem;
   }
 
@@ -232,13 +243,13 @@
     font-size: .6rem;
     letter-spacing: .22em;
     text-transform: uppercase;
-    color: rgba(255,255,255,.3);
+    color: var(--ink-l);
   }
   .scroll-cue::after {
     content: '';
     width: 1px;
     height: 36px;
-    background: rgba(255,255,255,.25);
+    background: var(--pist-l);
     animation: scrollPulse 2s ease-in-out infinite;
   }
   @keyframes scrollPulse {
@@ -776,6 +787,46 @@
 <section id="hero">
   <div id="hero-bg"></div>
 
+  <svg class="hero-vine hero-vine-tl" viewBox="0 0 160 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#B8943F" stroke-width="1.4" stroke-linecap="round">
+      <path d="M8 4 C30 30 18 55 38 78 C58 101 46 126 66 150 C86 174 74 199 94 223 C108 240 110 250 120 256"/>
+    </g>
+    <g fill="#B8943F">
+      <ellipse cx="14" cy="14" rx="11" ry="6" transform="rotate(35 14 14)" opacity=".85"/>
+      <ellipse cx="34" cy="40" rx="13" ry="6.5" transform="rotate(50 34 40)" opacity=".8"/>
+      <ellipse cx="20" cy="55" rx="10" ry="5" transform="rotate(-25 20 55)" opacity=".7"/>
+      <ellipse cx="50" cy="80" rx="13" ry="6.5" transform="rotate(45 50 80)" opacity=".8"/>
+      <ellipse cx="38" cy="95" rx="10" ry="5" transform="rotate(-20 38 95)" opacity=".65"/>
+      <ellipse cx="66" cy="118" rx="12" ry="6" transform="rotate(48 66 118)" opacity=".75"/>
+      <ellipse cx="56" cy="135" rx="9"  ry="4.5" transform="rotate(-18 56 135)" opacity=".6"/>
+      <ellipse cx="80" cy="155" rx="12" ry="6" transform="rotate(45 80 155)" opacity=".7"/>
+      <ellipse cx="92" cy="178" rx="11" ry="5.5" transform="rotate(50 92 178)" opacity=".65"/>
+      <ellipse cx="84" cy="195" rx="8"  ry="4" transform="rotate(-15 84 195)" opacity=".5"/>
+      <ellipse cx="102" cy="212" rx="9" ry="4.5" transform="rotate(42 102 212)" opacity=".55"/>
+      <ellipse cx="112" cy="232" rx="8" ry="4" transform="rotate(40 112 232)" opacity=".45"/>
+    </g>
+  </svg>
+
+  <svg class="hero-vine hero-vine-br" viewBox="0 0 160 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#B8943F" stroke-width="1.4" stroke-linecap="round">
+      <path d="M8 4 C30 30 18 55 38 78 C58 101 46 126 66 150 C86 174 74 199 94 223 C108 240 110 250 120 256"/>
+    </g>
+    <g fill="#B8943F">
+      <ellipse cx="14" cy="14" rx="11" ry="6" transform="rotate(35 14 14)" opacity=".85"/>
+      <ellipse cx="34" cy="40" rx="13" ry="6.5" transform="rotate(50 34 40)" opacity=".8"/>
+      <ellipse cx="20" cy="55" rx="10" ry="5" transform="rotate(-25 20 55)" opacity=".7"/>
+      <ellipse cx="50" cy="80" rx="13" ry="6.5" transform="rotate(45 50 80)" opacity=".8"/>
+      <ellipse cx="38" cy="95" rx="10" ry="5" transform="rotate(-20 38 95)" opacity=".65"/>
+      <ellipse cx="66" cy="118" rx="12" ry="6" transform="rotate(48 66 118)" opacity=".75"/>
+      <ellipse cx="56" cy="135" rx="9"  ry="4.5" transform="rotate(-18 56 135)" opacity=".6"/>
+      <ellipse cx="80" cy="155" rx="12" ry="6" transform="rotate(45 80 155)" opacity=".7"/>
+      <ellipse cx="92" cy="178" rx="11" ry="5.5" transform="rotate(50 92 178)" opacity=".65"/>
+      <ellipse cx="84" cy="195" rx="8"  ry="4" transform="rotate(-15 84 195)" opacity=".5"/>
+      <ellipse cx="102" cy="212" rx="9" ry="4.5" transform="rotate(42 102 212)" opacity=".55"/>
+      <ellipse cx="112" cy="232" rx="8" ry="4" transform="rotate(40 112 232)" opacity=".45"/>
+    </g>
+  </svg>
+
   <div class="hero-inner">
 
     <p class="hero-label">Convidamos você a celebrar conosco</p>
@@ -800,9 +851,7 @@
       <div class="cd"><span class="cd-n" id="cd-s">—</span><span class="cd-l">seg</span></div>
     </div>
 
-    <a href="#rsvp" class="btn" style="color:rgba(255,255,255,.65);border-color:rgba(255,255,255,.3);"
-       onmouseover="this.style.background='rgba(255,255,255,.1)';this.style.color='white'"
-       onmouseout="this.style.background='transparent';this.style.color='rgba(255,255,255,.65)'">
+    <a href="#rsvp" class="btn btn-pist">
       Confirmar Presença
     </a>
 
