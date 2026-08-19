@@ -1,0 +1,205 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --card: #263045;
+  --accent: #1e9b8a;
+  --accent2: #10b981;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --border: #334155;
+  --run: #f97316;
+  --cycle: #3b82f6;
+  --swim: #06b6d4;
+  --other: #8b5cf6;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app { display: flex; flex-direction: column; min-height: 100dvh; }
+
+header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; }
+.logo-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.logo-text { font-size: 18px; font-weight: 700; letter-spacing: -0.3px; }
+
+main { flex: 1; padding: 20px; max-width: 480px; margin: 0 auto; width: 100%; }
+
+.login-screen {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: calc(100dvh - 68px);
+  text-align: center; gap: 24px;
+}
+.login-hero { font-size: 64px; }
+.login-screen h1 { font-size: 26px; font-weight: 700; }
+.login-screen p { color: var(--muted); font-size: 15px; line-height: 1.6; max-width: 280px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 24px; border-radius: var(--radius); border: none;
+  font-size: 16px; font-weight: 600; cursor: pointer; text-decoration: none;
+  transition: opacity .15s, transform .1s;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active { transform: scale(.97); opacity: .9; }
+.btn-primary { background: var(--accent); color: #fff; width: 100%; }
+.btn-outline {
+  background: transparent; color: var(--muted);
+  border: 1px solid var(--border); font-size: 14px; padding: 10px 16px;
+}
+.btn-sm { padding: 8px 14px; font-size: 13px; }
+
+.user-bar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 20px;
+}
+.user-info { display: flex; align-items: center; gap: 10px; }
+.avatar {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700; color: #fff;
+}
+.user-name { font-weight: 600; font-size: 15px; }
+.user-label { color: var(--muted); font-size: 12px; }
+
+.stats-row {
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px; margin-bottom: 20px;
+}
+.stat-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 12px; text-align: center;
+}
+.stat-value { font-size: 22px; font-weight: 700; color: var(--accent2); }
+.stat-label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+.section-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.section-title { font-size: 16px; font-weight: 700; }
+
+.activity-list { display: flex; flex-direction: column; gap: 10px; }
+
+.activity-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 16px;
+  display: flex; align-items: center; gap: 14px;
+  cursor: pointer; transition: border-color .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.activity-card:active { border-color: var(--accent); }
+
+.activity-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.icon-running  { background: rgba(249,115,22,.15); }
+.icon-cycling  { background: rgba(59,130,246,.15); }
+.icon-swimming { background: rgba(6,182,212,.15); }
+.icon-other    { background: rgba(139,92,246,.15); }
+
+.activity-info { flex: 1; min-width: 0; }
+.activity-name {
+  font-weight: 600; font-size: 14px; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.activity-meta { color: var(--muted); font-size: 12px; margin-top: 2px; }
+
+.activity-stats { text-align: right; flex-shrink: 0; }
+.activity-distance { font-weight: 700; font-size: 16px; }
+.activity-time { color: var(--muted); font-size: 12px; }
+
+.detail-back {
+  display: flex; align-items: center; gap: 6px;
+  color: var(--accent); font-size: 14px; font-weight: 600;
+  cursor: pointer; margin-bottom: 20px;
+  -webkit-tap-highlight-color: transparent;
+}
+.detail-hero {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px; margin-bottom: 16px;
+  text-align: center;
+}
+.detail-icon { font-size: 48px; margin-bottom: 8px; }
+.detail-name { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+.detail-date { color: var(--muted); font-size: 13px; }
+
+.detail-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 16px;
+}
+.detail-stat {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); padding: 14px;
+}
+.detail-stat-label { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+.detail-stat-value { font-size: 22px; font-weight: 700; margin-top: 4px; }
+.detail-stat-unit { font-size: 12px; color: var(--muted); font-weight: 400; }
+
+.load-more { text-align: center; margin-top: 16px; }
+
+.spinner {
+  width: 32px; height: 32px;
+  border: 3px solid var(--border); border-top-color: var(--accent);
+  border-radius: 50%; animation: spin .7s linear infinite;
+  margin: 40px auto;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.error-msg {
+  background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3);
+  border-radius: var(--radius-sm); padding: 12px 16px;
+  color: #fca5a5; font-size: 14px; margin-bottom: 16px;
+}
+
+.install-banner {
+  background: linear-gradient(135deg, rgba(30,155,138,.2), rgba(16,185,129,.1));
+  border: 1px solid rgba(30,155,138,.4);
+  border-radius: var(--radius); padding: 14px 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 20px;
+}
+.install-banner p { font-size: 13px; color: var(--text); flex: 1; }
+.install-banner p span { color: var(--muted); display: block; font-size: 12px; }
+
+.hidden { display: none !important; }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #f8fafc; --surface: #ffffff; --card: #f1f5f9;
+    --text: #0f172a; --muted: #64748b; --border: #e2e8f0; --card: #f8fafc;
+  }
+}
